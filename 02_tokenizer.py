@@ -55,5 +55,17 @@ decoded_txt = CustomTokenzier('traning_input_txt.txt').decoder(encoded_txt)
 print(encoded_txt, decoded_txt)
 
 
+
+
 #tiktoken -- Byte Pair Encoding (BPE) Tokenizer is the ting that ChatGPT uses for tokenzing the input txt
+import tiktoken
+print('hii')
+t = tiktoken.encoding_for_model("gpt-4o")
+print('hello')
+
+tiktoken_encoded_txt = t.encode('my name is dipak.')
+tiktoken_decoded_txt = t.decode(tiktoken_encoded_txt)
+
+print(tiktoken_encoded_txt, tiktoken_decoded_txt)
+
 
