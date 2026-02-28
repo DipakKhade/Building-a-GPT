@@ -32,7 +32,7 @@ class CustomTokenzier:
         return
 
     @staticmethod
-    def encode(input_txt: str) -> List[int]:
+    def encoder(input_txt: str) -> List[int]:
         encodings = []
         for char in input_txt:
             for encoded_char in CustomTokenzier.encoding_mapper:
@@ -49,7 +49,7 @@ class CustomTokenzier:
                     decoding.append(decode_int[encode])
         return ''.join(decoding)
 
-encoded_txt = CustomTokenzier('traning_input_txt.txt').encode('my name is dipak.')
+encoded_txt = CustomTokenzier('traning_input_txt.txt').encoder('my name is dipak.')
 decoded_txt = CustomTokenzier('traning_input_txt.txt').decoder(encoded_txt) 
 
 print(encoded_txt, decoded_txt)
@@ -59,13 +59,22 @@ print(encoded_txt, decoded_txt)
 
 #tiktoken -- Byte Pair Encoding (BPE) Tokenizer is the ting that ChatGPT uses for tokenzing the input txt
 import tiktoken
-print('hii')
-t = tiktoken.encoding_for_model("gpt-4o")
-print('hello')
 
-tiktoken_encoded_txt = t.encode('my name is dipak.')
-tiktoken_decoded_txt = t.decode(tiktoken_encoded_txt)
+class BPETokenzier:
+    def __init__(self):
+        self.tokenzier = tiktoken.encoding_for_model("gpt-4o")
 
-print(tiktoken_encoded_txt, tiktoken_decoded_txt)
+    def encoder(self, input_txt: str) -> List[int]:
+        return self.tokenzier.encode(input_txt)
+    
+    def decoder(self, tokens: List[int]) -> str:
+        return self.tokenzier.decode(tokens)
+
+bpe = BPETokenzier()
+bpe_encoded_txt = bpe.encoder('hello from dipak')
+bpe_decoded_txt = bpe.decoder(bpe_encoded_txt)
+
+print(bpe_encoded_txt, bpe_decoded_txt)
+
 
 
