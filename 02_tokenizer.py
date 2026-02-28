@@ -19,7 +19,9 @@ class CustomTokenzier:
     @staticmethod
     def get_all_unique_chars_from_traning_txtdata() -> str:
         chars = ''
-        for char in list(set(CustomTokenzier.trainig_data)):
+        x = list(set(CustomTokenzier.trainig_data))
+        x.sort()
+        for char in x:
             chars+= char
         return chars
     
@@ -45,10 +47,12 @@ class CustomTokenzier:
             for decode_int in CustomTokenzier.decoding_mapper:
                 if encode == list(decode_int.keys())[0]:
                     decoding.append(decode_int[encode])
-        return decoding
+        return ''.join(decoding)
 
-# print(CustomTokenzier('traning_input_txt.txt').encode('Before'))  #-----> [53, 6, 15, 7, 21, 6]
-print(CustomTokenzier('traning_input_txt.txt').decoder([53, 6, 15, 7, 21, 6]))  #-----> [53, 6, 15, 7, 21, 6]
+encoded_txt = CustomTokenzier('traning_input_txt.txt').encode('my name is dipak.')
+decoded_txt = CustomTokenzier('traning_input_txt.txt').decoder(encoded_txt) 
+
+print(encoded_txt, decoded_txt)
 
 
 #tiktoken -- Byte Pair Encoding (BPE) Tokenizer is the ting that ChatGPT uses for tokenzing the input txt
