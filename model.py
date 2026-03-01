@@ -8,7 +8,7 @@ with open('data/traning_input_txt.txt', 'r+') as f:
     text_data = f.read()
 
 
-input_tokens = bpe_tokenizer.encoder(text_data)
-print(input_tokens)
+input_tokens = torch.tensor(bpe_tokenizer.encoder(text_data), dtype=torch.long)
+print(input_tokens[:100])
 
 
