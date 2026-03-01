@@ -49,15 +49,15 @@ class CustomTokenzier:
                     decoding.append(decode_int[encode])
         return ''.join(decoding)
 
-encoded_txt = CustomTokenzier('traning_input_txt.txt').encoder('my name is dipak.')
-decoded_txt = CustomTokenzier('traning_input_txt.txt').decoder(encoded_txt) 
+# encoded_txt = CustomTokenzier('traning_input_txt.txt').encoder('my name is dipak.')
+# decoded_txt = CustomTokenzier('traning_input_txt.txt').decoder(encoded_txt) 
 
-print(encoded_txt, decoded_txt)
-
-
+# print(encoded_txt, decoded_txt)
 
 
-#tiktoken -- Byte Pair Encoding (BPE) Tokenizer is the ting that ChatGPT uses for tokenzing the input txt
+
+
+#tiktoken -- Byte Pair Encoding (BPE) Tokenizer is the thing that ChatGPT uses for tokenzing the input txt
 import tiktoken
 
 class BPETokenzier:
@@ -70,11 +70,11 @@ class BPETokenzier:
     def decoder(self, tokens: List[int]) -> str:
         return self.tokenzier.decode(tokens)
 
-bpe = BPETokenzier()
-bpe_encoded_txt = bpe.encoder('hello from dipak')
-bpe_decoded_txt = bpe.decoder(bpe_encoded_txt)
+# bpe = BPETokenzier()
+# bpe_encoded_txt = bpe.encoder('hello from dipak')
+# bpe_decoded_txt = bpe.decoder(bpe_encoded_txt)
 
-print(bpe_encoded_txt, bpe_decoded_txt)
+# print(bpe_encoded_txt, bpe_decoded_txt)
 
 
 
