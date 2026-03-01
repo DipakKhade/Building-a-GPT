@@ -9,6 +9,9 @@ with open('data/traning_input_txt.txt', 'r+') as f:
 
 
 input_tokens = torch.tensor(bpe_tokenizer.encoder(text_data), dtype=torch.long)
-print(input_tokens[:100])
+
+traning_data_count = int(0.9 * input_tokens)
+
+print(traning_data_count)
 
 
